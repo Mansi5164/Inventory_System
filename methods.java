@@ -1,8 +1,20 @@
-public class methods{
+import java.util.Map;
+import java.util.Scanner;
+import java.util.HashMap;
+// import java.util.Map;
+public class Methods{
+    private Scanner scanner = new Scanner(System.in);
+    private Map<String, Map<String, Product>> inventory;
+
+    public Methods(Map<String, Map<String, Product>> inventory) {
+        this.inventory = inventory;
+    }
+
     public static void main(String[] args){
 
     }
-    private void displayCategoryMenu(String category) {
+    public void displayCategoryMenu(String category) {
+
         while (true) {
             System.out.println("\n=== " + category + " ===");
             System.out.println("1. View Products");
@@ -35,7 +47,7 @@ public class methods{
             }
         }
     }
-    private void displayProducts(String category) {
+    public void displayProducts(String category) {
         System.out.println("\n=== " + category + " Products ===");
         Map<String, Product> products = inventory.get(category);
         if (products.isEmpty()) {
@@ -51,7 +63,7 @@ public class methods{
         }
     }
 
-    private void addProduct(String category) {
+    public void addProduct(String category) {
         System.out.print("Enter product name: ");
         String name = scanner.nextLine();
         System.out.print("Enter price: ");
@@ -64,7 +76,7 @@ public class methods{
         System.out.println("Product added successfully!");
     }
 
-    private void updateProduct(String category) {
+    public void updateProduct(String category) {
         System.out.print("Enter product name to update: ");
         String name = scanner.nextLine();
         
@@ -83,7 +95,7 @@ public class methods{
         System.out.println("Product updated successfully!");
     }
 
-    private void removeProduct(String category) {
+    public void removeProduct(String category) {
         System.out.print("Enter product name to remove: ");
         String name = scanner.nextLine();
         

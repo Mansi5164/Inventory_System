@@ -1,17 +1,18 @@
 import java.util.Scanner;
 import java.util.HashMap;
 import java.util.Map;
-import package ClothingSection;
 
 public class ClothingSection {
     private Scanner scanner = new Scanner(System.in);
     private Map<String, Map<String, Product>> inventory;
+    private Methods methods;
 
     public ClothingSection() {
         inventory = new HashMap<>();
         inventory.put("Men", new HashMap<>());
         inventory.put("Women", new HashMap<>());
         inventory.put("Kids", new HashMap<>());
+        methods = new Methods(inventory);
         initializeSampleData();
     }
 
@@ -43,13 +44,13 @@ public class ClothingSection {
 
             switch (choice) {
                 case 1:
-                    displayCategoryMenu("Men");
+                    methods.displayCategoryMenu("Men");
                     break;
                 case 2:
-                    displayCategoryMenu("Women");
+                    methods.displayCategoryMenu("Women");
                     break;
                 case 3:
-                    displayCategoryMenu("Kids");
+                    methods.displayCategoryMenu("Kids");
                     break;
                 case 4:
                     return;

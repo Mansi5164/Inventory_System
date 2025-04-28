@@ -1,17 +1,18 @@
 import java.util.Scanner;
 import java.util.HashMap;
 import java.util.Map;
-import package methods;
 
 public class StationarySection {
     private Scanner scanner = new Scanner(System.in);
     private Map<String, Map<String, Product>> inventory;
+    private Methods methods;
 
     public StationarySection() {
         inventory = new HashMap<>();
         inventory.put("Books", new HashMap<>());
         inventory.put("Paper", new HashMap<>());
         inventory.put("Writing Instruments", new HashMap<>());
+        methods = new Methods(inventory);
         initializeSampleData();
     }
 
@@ -45,13 +46,13 @@ public class StationarySection {
 
             switch (choice) {
                 case 1:
-                    displayCategoryMenu("Books");
+                    methods.displayCategoryMenu("Books");
                     break;
                 case 2:
-                    displayCategoryMenu("Paper");
+                    methods.displayCategoryMenu("Paper");
                     break;
                 case 3:
-                    displayCategoryMenu("Writing Instruments");
+                    methods.displayCategoryMenu("Writing Instruments");
                     break;
                 case 4:
                     return;
