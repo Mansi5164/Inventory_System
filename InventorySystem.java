@@ -5,6 +5,7 @@ public class InventorySystem {
     private static ClothingSection clothingSection = new ClothingSection();
     private static StationarySection stationarySection = new StationarySection();
     private static ElectronicsSection electronicsSection = new ElectronicsSection(); // NEW
+    private static FoodSection foodSection = new FoodSection();
 
     public static void main(String[] args) {
         while (true) {
@@ -17,7 +18,7 @@ public class InventorySystem {
                     System.out.println("Category 1 selected");
                     break;
                 case 2:
-                    System.out.println("Category 2 selected");
+                    foodSection.displayFoodMenu();
                     break;
                 case 3:
                     stationarySection.displayStationaryMenu();
@@ -40,7 +41,7 @@ public class InventorySystem {
     private static void displayMainMenu() {
         System.out.println("\n=== Inventory Management System ===");
         System.out.println("1. Category 1");
-        System.out.println("2. Category 2");
+        System.out.println("2. Food Section");
         System.out.println("3. Stationary Section");
         System.out.println("4. Clothing Section");
         System.out.println("5. Electronics Section"); // NEW
