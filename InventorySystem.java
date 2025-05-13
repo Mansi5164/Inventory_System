@@ -4,10 +4,17 @@ public class InventorySystem {
     private static Scanner scanner = new Scanner(System.in);
     private static ClothingSection clothingSection = new ClothingSection();
     private static StationarySection stationarySection = new StationarySection();
-    private static ElectronicsSection electronicsSection = new ElectronicsSection(); // NEW
+    private static ElectronicsSection electronicsSection = new ElectronicsSection();
     private static FoodSection foodSection = new FoodSection();
+    private static PasswordManager passwordManager = new PasswordManager();
 
     public static void main(String[] args) {
+        // Authenticate user before starting the program
+        if (!passwordManager.authenticate()) {
+            System.out.println("Authentication failed. Program will exit.");
+            System.exit(0);
+        }
+
         while (true) {
             displayMainMenu();
             int choice = scanner.nextInt();
@@ -27,9 +34,12 @@ public class InventorySystem {
                     clothingSection.displayClothingMenu();
                     break;
                 case 5:
-                    electronicsSection.displayElectronicsMenu(); // NEW
+                    electronicsSection.displayElectronicsMenu();
                     break;
                 case 6:
+                    passwordManager.changePassword();
+                    break;
+                case 7:
                     System.out.println("Exiting...");
                     System.exit(0);
                 default:
@@ -44,8 +54,9 @@ public class InventorySystem {
         System.out.println("2. Food Section");
         System.out.println("3. Stationary Section");
         System.out.println("4. Clothing Section");
-        System.out.println("5. Electronics Section"); // NEW
-        System.out.println("6. Exit"); // UPDATED
-        System.out.print("Enter your choice (1-6): ");
+        System.out.println("5. Electronics Section");
+        System.out.println("6. Change Password");
+        System.out.println("7. Exit");
+        System.out.print("Enter your choice (1-7): ");
     }
 }

@@ -1,27 +1,30 @@
 import java.util.Map;
 import java.util.Scanner;
-import java.util.HashMap;
-// import java.util.Map;
-public class Methods{
+
+public class Methods {
     private Scanner scanner = new Scanner(System.in);
     private Map<String, Map<String, Product>> inventory;
+    private FileManager fileManager;
+    private String currentSection;
 
     public Methods(Map<String, Map<String, Product>> inventory) {
         this.inventory = inventory;
+        this.fileManager = new FileManager();
     }
 
-    public static void main(String[] args){
-
+    public void setCurrentSection(String section) {
+        this.currentSection = section;
     }
+
     public void displayCategoryMenu(String category) {
-
+        setCurrentSection(category);
         while (true) {
             System.out.println("\n=== " + category + " ===");
             System.out.println("1. View Products");
             System.out.println("2. Add Product");
             System.out.println("3. Update Product");
             System.out.println("4. Remove Product");
-            System.out.println("5. Back to Stationary Menu");
+            System.out.println("5. Back to Section Menu");
             System.out.print("Enter your choice (1-5): ");
 
             int choice = scanner.nextInt();
@@ -33,12 +36,15 @@ public class Methods{
                     break;
                 case 2:
                     addProduct(category);
+                    fileManager.saveInventory(currentSection, inventory);
                     break;
                 case 3:
                     updateProduct(category);
+                    fileManager.saveInventory(currentSection, inventory);
                     break;
                 case 4:
                     removeProduct(category);
+                    fileManager.saveInventory(currentSection, inventory);
                     break;
                 case 5:
                     return;
@@ -47,6 +53,7 @@ public class Methods{
             }
         }
     }
+
     public void displayProducts(String category) {
         System.out.println("\n=== " + category + " Products ===");
         Map<String, Product> products = inventory.get(category);
@@ -54,6 +61,7 @@ public class Methods{
             System.out.println("No products available.");
             return;
         }
+
         for (Map.Entry<String, Product> entry : products.entrySet()) {
             Product product = entry.getValue();
             System.out.println("Name: " + product.getName());
@@ -74,6 +82,7 @@ public class Methods{
 
         inventory.get(category).put(name, new Product(name, price, quantity));
         System.out.println("Product added successfully!");
+        displayProducts(category);
     }
 
     public void updateProduct(String category) {
@@ -93,6 +102,7 @@ public class Methods{
 
         inventory.get(category).put(name, new Product(name, price, quantity));
         System.out.println("Product updated successfully!");
+        displayProducts(category);
     }
 
     public void removeProduct(String category) {
@@ -101,8 +111,9 @@ public class Methods{
         
         if (inventory.get(category).remove(name) != null) {
             System.out.println("Product removed successfully!");
+            displayProducts(category);
         } else {
             System.out.println("Product not found!");
         }
     }
-}
+} 
