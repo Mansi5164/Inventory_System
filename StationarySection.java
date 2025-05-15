@@ -27,16 +27,16 @@ public class StationarySection {
 
     private void initializeSampleData() {
         // Sample Pens
-        inventory.get("Pens").put("Ballpoint Pen", new Product("Ballpoint Pen", 1.99, 100));
-        inventory.get("Pens").put("Gel Pen", new Product("Gel Pen", 2.99, 80));
+        inventory.get("Pens").put("Ballpoint Pen", new Product("Ballpoint Pen", 1.99, 100,"xyz"));
+        inventory.get("Pens").put("Gel Pen", new Product("Gel Pen", 2.99, 80,"xyz"));
 
         // Sample Notebooks
-        inventory.get("Notebooks").put("Spiral Notebook", new Product("Spiral Notebook", 4.99, 50));
-        inventory.get("Notebooks").put("Composition Book", new Product("Composition Book", 3.99, 60));
+        inventory.get("Notebooks").put("Spiral Notebook", new Product("Spiral Notebook", 4.99, 50,"xyz"));
+        inventory.get("Notebooks").put("Composition Book", new Product("Composition Book", 3.99, 60,"xyz"));
 
         // Sample Art Supplies
-        inventory.get("Art Supplies").put("Watercolors", new Product("Watercolors", 12.99, 30));
-        inventory.get("Art Supplies").put("Sketch Pencils", new Product("Sketch Pencils", 8.99, 40));
+        inventory.get("Art Supplies").put("Watercolors", new Product("Watercolors", 12.99, 30,"xyz"));
+        inventory.get("Art Supplies").put("Sketch Pencils", new Product("Sketch Pencils", 8.99, 40,"xyz"));
     }
 
     public void displayStationaryMenu() {

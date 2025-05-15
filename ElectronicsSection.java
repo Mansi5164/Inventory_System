@@ -27,16 +27,16 @@ public class ElectronicsSection {
 
     private void initializeSampleData() {
         // Sample Mobiles
-        inventory.get("Mobiles").put("iPhone 14", new Product("iPhone 14", 999.99, 10));
-        inventory.get("Mobiles").put("Samsung Galaxy S23", new Product("Samsung Galaxy S23", 899.99, 8));
+        inventory.get("Mobiles").put("iPhone 14", new Product("iPhone 14", 999.99, 10,"Newly Released"));
+        inventory.get("Mobiles").put("Samsung Galaxy S23", new Product("Samsung Galaxy S23", 899.99, 8,"Discount 5%"));
 
         // Sample Laptops
-        inventory.get("Laptops").put("MacBook Pro", new Product("MacBook Pro", 1999.99, 5));
-        inventory.get("Laptops").put("Dell XPS 13", new Product("Dell XPS 13", 1299.99, 7));
+        inventory.get("Laptops").put("MacBook Pro", new Product("MacBook Pro", 1999.99, 5,"Discount 10%"));
+        inventory.get("Laptops").put("Dell XPS 13", new Product("Dell XPS 13", 1299.99, 7,"Free Accessories"));
 
         // Sample Accessories
-        inventory.get("Accessories").put("AirPods", new Product("AirPods", 199.99, 20));
-        inventory.get("Accessories").put("Wireless Charger", new Product("Wireless Charger", 49.99, 25));
+        inventory.get("Accessories").put("AirPods", new Product("AirPods", 199.99, 20,"Less expensive"));
+        inventory.get("Accessories").put("Wireless Charger", new Product("Wireless Charger", 49.99, 25,"Fast charging"));
     }
 
     public void displayElectronicsMenu() {

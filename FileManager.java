@@ -1,49 +1,62 @@
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class FileManager {
-    private static final String DATA_DIRECTORY = "inventory_data";
-    private static final String FILE_EXTENSION = ".dat";
+    private static final String BASE_PATH = "inventory_data/";
 
     public FileManager() {
-        // Create data directory if it doesn't exist
-        File directory = new File(DATA_DIRECTORY);
-        if (!directory.exists()) {
-            directory.mkdir();
+        File dir = new File(BASE_PATH);
+        if (!dir.exists()) {
+            dir.mkdirs();
         }
     }
 
-    public void saveInventory(String sectionName, Map<String, Map<String, Product>> inventory) {
-        String fileName = DATA_DIRECTORY + "/" + sectionName + FILE_EXTENSION;
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
+    // ✅ Save the full inventory map for the section (all categories)
+    public void saveInventory(String section, Map<String, Map<String, Product>> inventory) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(
+                new FileOutputStream(BASE_PATH + section + ".dat"))) {
             oos.writeObject(inventory);
-            System.out.println("Inventory data saved successfully for " + sectionName);
+            System.out.println("Inventory saved for section: " + section);
         } catch (IOException e) {
-            System.err.println("Error saving inventory data: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
-    @SuppressWarnings("unchecked")
-    public Map<String, Map<String, Product>> loadInventory(String sectionName) {
-        String fileName = DATA_DIRECTORY + "/" + sectionName + FILE_EXTENSION;
-        File file = new File(fileName);
-        
+    // ✅ Load the full inventory map for the section (all categories)
+    public Map<String, Map<String, Product>> loadInventory(String section) {
+        File file = new File(BASE_PATH + section + ".dat");
         if (!file.exists()) {
-            return new HashMap<>();
+            return new HashMap<>();  // If file doesn't exist, return empty inventory
         }
 
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
             return (Map<String, Map<String, Product>>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Error loading inventory data: " + e.getMessage());
+            e.printStackTrace();
             return new HashMap<>();
         }
     }
 
-    public boolean deleteInventory(String sectionName) {
-        String fileName = DATA_DIRECTORY + "/" + sectionName + FILE_EXTENSION;
-        File file = new File(fileName);
-        return file.delete();
+    public void backupInventory(String section) {
+        File source = new File(BASE_PATH + section + ".dat");
+        File backup = new File(BASE_PATH + section + "_backup.dat");
+
+        try (InputStream in = new FileInputStream(source);
+             OutputStream out = new FileOutputStream(backup)) {
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = in.read(buffer)) > 0) {
+                out.write(buffer, 0, length);
+            }
+            System.out.println("Backup created for section: " + section);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-} 
+
+    // Optional: Restore just one category from the section if needed
+    public Map<String, Product> restoreInventory(String section) {
+        Map<String, Map<String, Product>> fullInventory = loadInventory(section);
+        return fullInventory.getOrDefault(section, new HashMap<>());
+    }
+}

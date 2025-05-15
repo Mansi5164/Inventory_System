@@ -26,18 +26,19 @@ public class FoodSection {
     }
 
     private void initializeSampleData() {
-        // Sample Groceries
-        inventory.get("Groceries").put("Rice", new Product("Rice", 29.99, 50));
-        inventory.get("Groceries").put("Flour", new Product("Flour", 19.99, 40));
+    // Sample Groceries
+    inventory.get("Groceries").put("Rice", new Product("Rice", 29.99, 50, "Premium Basmati Rice"));
+    inventory.get("Groceries").put("Flour", new Product("Flour", 19.99, 40, "Whole Wheat Flour"));
 
-        // Sample Beverages
-        inventory.get("Beverages").put("Coffee", new Product("Coffee", 9.99, 30));
-        inventory.get("Beverages").put("Tea", new Product("Tea", 7.99, 35));
+    // Sample Beverages
+    inventory.get("Beverages").put("Coffee", new Product("Coffee", 9.99, 30, "Instant Coffee Powder"));
+    inventory.get("Beverages").put("Tea", new Product("Tea", 7.99, 35, "Organic Green Tea"));
 
-        // Sample Snacks
-        inventory.get("Snacks").put("Chips", new Product("Chips", 3.99, 100));
-        inventory.get("Snacks").put("Cookies", new Product("Cookies", 4.99, 80));
-    }
+    // Sample Snacks
+    inventory.get("Snacks").put("Chips", new Product("Chips", 3.99, 100, "Salted Potato Chips"));
+    inventory.get("Snacks").put("Cookies", new Product("Cookies", 4.99, 80, "Chocolate Chip Cookies"));
+}
+
 
     public void displayFoodMenu() {
         while (true) {

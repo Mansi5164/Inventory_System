@@ -22,24 +22,21 @@ public class InventorySystem {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Category 1 selected");
-                    break;
-                case 2:
                     foodSection.displayFoodMenu();
                     break;
-                case 3:
+                case 2:
                     stationarySection.displayStationaryMenu();
                     break;
-                case 4:
+                case 3:
                     clothingSection.displayClothingMenu();
                     break;
-                case 5:
+                case 4:
                     electronicsSection.displayElectronicsMenu();
                     break;
-                case 6:
+                case 5:
                     passwordManager.changePassword();
                     break;
-                case 7:
+                case 6:
                     System.out.println("Exiting...");
                     System.exit(0);
                 default:
@@ -50,13 +47,12 @@ public class InventorySystem {
 
     private static void displayMainMenu() {
         System.out.println("\n=== Inventory Management System ===");
-        System.out.println("1. Category 1");
-        System.out.println("2. Food Section");
-        System.out.println("3. Stationary Section");
-        System.out.println("4. Clothing Section");
-        System.out.println("5. Electronics Section");
-        System.out.println("6. Change Password");
-        System.out.println("7. Exit");
+        System.out.println("1. Food Section");
+        System.out.println("2. Stationary Section");
+        System.out.println("3. Clothing Section");
+        System.out.println("4. Electronics Section");
+        System.out.println("5. Change Password");
+        System.out.println("6. Exit");
         System.out.print("Enter your choice (1-7): ");
     }
 }

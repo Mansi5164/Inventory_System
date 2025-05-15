@@ -27,16 +27,16 @@ public class ClothingSection {
 
     private void initializeSampleData() {
         // Sample Men's Wear
-        inventory.get("Men's Wear").put("T-Shirt", new Product("T-Shirt", 24.99, 50));
-        inventory.get("Men's Wear").put("Jeans", new Product("Jeans", 49.99, 30));
+        inventory.get("Men's Wear").put("T-Shirt", new Product("T-Shirt", 24.99, 50,"Cotton"));
+        inventory.get("Men's Wear").put("Jeans", new Product("Jeans", 49.99, 30,"Blue Colour"));
 
         // Sample Women's Wear
-        inventory.get("Women's Wear").put("Dress", new Product("Dress", 39.99, 40));
-        inventory.get("Women's Wear").put("Blouse", new Product("Blouse", 29.99, 45));
+        inventory.get("Women's Wear").put("Dress", new Product("Dress", 39.99, 40,"Gown"));
+        inventory.get("Women's Wear").put("Blouse", new Product("Blouse", 29.99, 45,"xyz"));
 
         // Sample Accessories
-        inventory.get("Accessories").put("Belt", new Product("Belt", 19.99, 25));
-        inventory.get("Accessories").put("Scarf", new Product("Scarf", 14.99, 35));
+        inventory.get("Accessories").put("Belt", new Product("Belt", 19.99, 25,"xyz"));
+        inventory.get("Accessories").put("Scarf", new Product("Scarf", 14.99, 35,"xyz"));
     }
 
     public void displayClothingMenu() {
