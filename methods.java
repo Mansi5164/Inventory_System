@@ -127,8 +127,11 @@ public class Methods {
         System.out.print("Enter quantity: ");
         int quantity = scanner.nextInt();
         scanner.nextLine();
+<<<<<<< HEAD
         System.out.print("Enter description: ");
         String description = scanner.nextLine();
+=======
+>>>>>>> 5298ab02b39be76234dc4456bca084bc0bece107
 
         inventory.get(category).put(name, new Product(name, price, quantity, description));
         System.out.println("Product added successfully!");
@@ -138,9 +141,14 @@ public class Methods {
         System.out.print("Enter product name to update: ");
         String name = scanner.nextLine();
 
+<<<<<<< HEAD
         Product product = inventory.get(category).get(name);
         if (product == null) {
             System.out.println("Product not found.");
+=======
+        if (!inventory.get(category).containsKey(name)) {
+            System.out.println("Product not found!");
+>>>>>>> 5298ab02b39be76234dc4456bca084bc0bece107
             return;
         }
 
@@ -149,8 +157,11 @@ public class Methods {
         System.out.print("Enter new quantity: ");
         int quantity = scanner.nextInt();
         scanner.nextLine();
+<<<<<<< HEAD
         System.out.print("Enter new description: ");
         String description = scanner.nextLine();
+=======
+>>>>>>> 5298ab02b39be76234dc4456bca084bc0bece107
 
         inventory.get(category).put(name, new Product(name, price, quantity, description));
         System.out.println("Product updated successfully!");
@@ -188,4 +199,8 @@ public class Methods {
             System.out.println("Product not found!");
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5298ab02b39be76234dc4456bca084bc0bece107

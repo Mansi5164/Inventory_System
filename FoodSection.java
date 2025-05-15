@@ -8,7 +8,7 @@ public class FoodSection {
     private Methods methods;
     private FileManager fileManager;
 
-    public FoodSection() {
+    public FoodSection() { 
         fileManager = new FileManager();
         inventory = fileManager.loadInventory("Food");
         
